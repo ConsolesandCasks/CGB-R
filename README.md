@@ -5,11 +5,12 @@ The C&C CGB-R is a new Game Boy Color power regulator board with power rails for
 
 ## Description
 
-Many modern Game Boy power regulators forgo the higher voltage connections required by the original LCD screen under the assumption that the user will want to use a newer, modern IPS or similar screen. This regulator uses the same fundamental 5V regulator IC and circuit (Texas Instruments TPS61202) and adds an additional regulator IC and circuit (Linear Technology/Analog Devices LT3463/LT3463A) to generate the 13.6V and -15V for input to the original CGB screen.
+Many modern Game Boy power regulators forgo the higher voltage connections required by the original LCD screen under the assumption that the user will want to use a newer, modern IPS or similar screen. This regulator board <!-- uses the same fundamental 5V regulator IC and circuit (Texas Instruments TPS61202) and --> adds an additional regulator IC and circuit (Linear Technology/Analog Devices LT3463/LT3463A) to generate the 13.6V and -15V for input to the original CGB screen.
 
 ## BOM
 <img src="PXL_20230927_001414181.jpg" width=327 height=434>
-
+Currently being revised for alternative components
+<!--
 | Reference | Qty | Value          | Footprint |
 |-----------|-----|----------------|-----------|
 | C1, C2    | 2   | 22uF           | 805       |
@@ -23,7 +24,7 @@ Many modern Game Boy power regulators forgo the higher voltage connections requi
 | R3        | 1   | 100K           | 603       |
 | U1        | 1   | TPS61202DRC    | VSON-10   |
 | U2        | 1   | LT3463AEDD-PBF | DFN-10    |
-
+-->
 ## Compatibility
 
 This board should be compatible with stock CGB motherboards. I have tested on CGB-CPU-03 (CPU-CGB-C). It should also be compatible with N64-freak Pocket-Color and Light-Color conversion boards (_IT IS NOT COMPATIBLE_ with skimzor PoCo or Bucket Mouse MGBC as these do not have the CGB-REG IC). 
