@@ -17,7 +17,7 @@ This regulator board uses a high efficiency +5v regulator IC and adds an additio
 | C5, C6, C8    | 3   | 1uF            | 0603       |
 | C7 | 1| 10uF | 0603 |
 | D1        | 1   | B0540          | SOD-123   |
-| L1        | 1   | 1uH          | Coilcraft XAL4020 (use others at own risk)    |
+| L1        | 1   | 1uH          | Coilcraft XGL4020 (use others at own risk)    |
 | L2, L3    | 2   | 10uH           | 1210      |
 | R1        | 1   | 121K           | 0603       |
 | R2, R4    | 2   | 1.2M           | 0603       |
