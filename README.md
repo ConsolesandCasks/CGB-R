@@ -25,7 +25,7 @@ This regulator board uses a high efficiency +5v regulator IC and adds an additio
 | R5        | 1   | 10K           | 0603       |
 | U1        | 1   | TPS61033/TPS610333    | SOT-583   |
 | U2        | 1   | LT3463AEDD-PBF | DFN-10    |
-| U3 | 1 | TPS22919DCKR | SC-70 |
+| U3 | 1 | TPS22919DCKR - tbd testing alternative part | SC-70 |
 
 
 ## Compatibility
@@ -48,7 +48,7 @@ The 5V regulator is a Texas Instruments TPS61033(3) IC. Either variant of this c
 The LCD rail IC is an Analog Devices/Linear Technology LT3463(A) designed to save space by using as few components and be as compact in component size as possible. The IC has decent efficiency and is capable of supplying significantly higher current than necessary for the LCD rails. One additional benefit here is the rails are regulated, where on a stock GBC they are unregulated.
 
 ### Load Switch
-The Power Good signal on the TPS61033 connects to the enable on a TI TPS22919 Load Switch. The output of the Load Switch is signals to the enable line on the LT3463 chip (which is powered directly by the TPS61033). This output also is what powers the system. I've added this component to ensure proper sequencing, to help limit inrush current issues, to help stabilize the main DC/DC and low voltage cutoff at low battery levels, and as added peace of mind short circuit protection.
+The Power Good signal on the TPS61033 connects to the enable on a TI TPS22919 Load Switch. The output of the Load Switch is signals to the enable line on the LT3463 chip (which is powered directly by the TPS61033). This output also is what powers the system. I've added this component to ensure proper sequencing, to help limit inrush current issues, to help stabilize the main DC/DC and low voltage cutoff at low battery levels, and as added peace of mind short circuit protection. CURRENTLY TESTING ALTERNATIVE LOAD SWITCH PARTS FOR IMPROVED PERFORMANCE
 
 ## Testing
 The current design is my 6th revision of this board so it has gone through many iterations. I've changed the primary regulator multiple times and added the load switch to help with the sequencing, low power shutdown, and inrush current concerns. My testing shows this is at least comparable in efficiency as a stock regulator, perhaps slightly more efficient. Life testing has shown it to improve on stock under most of my tests. It powers on with AAA NiMHs at 2.0v, but won't do that with an EZ-Flash in the system.
