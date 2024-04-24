@@ -14,25 +14,28 @@ This regulator board uses a high efficiency +5v regulator IC and adds an additio
 |-----------|-----|----------------|-----------|
 | C1, C2, C3    | 3   | 22uF           | 0805       |
 | C4    | 1   | 0.1uF          | 0603       |
-| C5, C6, C8    | 3   | 1uF            | 0603       |
+| C5, C6   | 3   | 1uF            | 0603       |
 | C7 | 1| 10uF | 0603 |
+| C8 | 0 | Unpopulated | |
 | D1        | 1   | B0540          | SOD-123   |
-| L1        | 1   | 1uH          | Coilcraft XGL4020 (use others at own risk)    |
-| L2, L3    | 2   | 10uH           | 1210      |
+| L1        | 1   | 0.47uH          | Coilcraft XGL4020 or MPL-AL4020   |
+| L2, L3    | 2   | 22uH           | 1210     |
 | R1        | 1   | 121K           | 0603       |
 | R2, R4    | 2   | 1.2M           | 0603       |
 | R3        | 1   | 100K           | 0603       |
 | R5        | 1   | 10K           | 0603       |
 | U1        | 1   | TPS61033/TPS610333    | SOT-583   |
 | U2        | 1   | LT3463AEDD-PBF | DFN-10    |
-| U3 | 1 | TPS22919DCKR - tbd testing alternative part | SC-70 |
+| U3 | 1 | TPS22919DCKR | SC-70 |
 
 
 ## Compatibility
 
 This board should be compatible with stock CGB motherboards. I have tested on CGB-CPU-03 (CPU-CGB-C). It should also be compatible with N64-freak Pocket-Color and Light-Color conversion boards (_IT IS NOT COMPATIBLE_ with skimzor PoCo or Bucket Mouse MGBC as these do not have the CGB-REG IC). 
 
-Hand cut or Natalie-the-nerd pocket color boards require running wires from pins 5 and 6 to the appropriate vias for the -15V and 13.6V rails, as well as relocating R20 and VR2 for CGB-REG, as these components are on the bottom half of the CGB board. I hope to have a tutorial for this particular configuration available in the near future.
+I would strongly advise removing C32 from the Game Boy Color PCB when using this regulator. This capacitor is unneccesary as the new regulator PCB already includes appropriate output capacitors, and due to the high frequency switching of this device it will provide little benefit and will increase inrush current, possibly leading to the Game Boy failing to boot at low-battery-high-current loads (such as with an EZ-flash or Everdrive)
+
+Hand cut or Natalie-the-nerd pocket color boards require running wires from pins 5 and 6 to the appropriate vias for the -15V and 13.6V rails, as well as relocating R20, C35, and VR2 for CGB-REG, as these components are on the bottom half of the CGB board. I hope to have a tutorial for this particular configuration available in the near future.
 
 ## Part Selection Methodology
 
@@ -48,12 +51,16 @@ The 5V regulator is a Texas Instruments TPS61033(3) IC. Either variant of this c
 The LCD rail IC is an Analog Devices/Linear Technology LT3463(A) designed to save space by using as few components and be as compact in component size as possible. The IC has decent efficiency and is capable of supplying significantly higher current than necessary for the LCD rails. One additional benefit here is the rails are regulated, where on a stock GBC they are unregulated.
 
 ### Load Switch
-The Power Good signal on the TPS61033 connects to the enable on a TI TPS22919 Load Switch. The output of the Load Switch is signals to the enable line on the LT3463 chip (which is powered directly by the TPS61033). This output also is what powers the system. I've added this component to ensure proper sequencing, to help limit inrush current issues, to help stabilize the main DC/DC and low voltage cutoff at low battery levels, and as added peace of mind short circuit protection. CURRENTLY TESTING ALTERNATIVE LOAD SWITCH PARTS FOR IMPROVED PERFORMANCE
+The Power Good signal on the TPS61033 connects to the enable on a TI TPS22919 Load Switch. The output of the Load Switch is signals to the enable line on the LT3463 chip (which is powered directly by the TPS61033). This output also is what powers the system. I've added this component to ensure proper sequencing, to help limit inrush current issues, to help stabilize the main DC/DC and low voltage cutoff at low battery levels, and as added peace of mind short circuit protection.
 
 ## Testing
 The current design is my 6th revision of this board so it has gone through many iterations. I've changed the primary regulator multiple times and added the load switch to help with the sequencing, low power shutdown, and inrush current concerns. My testing shows this is at least comparable in efficiency as a stock regulator, perhaps slightly more efficient. Life testing has shown it to improve on stock under most of my tests. It powers on with AAA NiMHs at 2.0v, but won't do that with an EZ-Flash in the system.
 
-I have analyzed version 1.3's noise, inrush, and various other factors on an oscilloscope and compared those to stock. This was part of the reason for adding the load switch on the output. By the numbers, the regulator is "less noisy" than stock - but due to the cyclical nature of that noise - it does reflect a small hum onto the input rail. Because the CGB runs the audio amp off of the batteries directly, this noise is slightly audible (and will vary system to system). While system volume is set high, this audible noise is LESS than the stock CGB. When the system volume is set low, the audible noise is higher than a stock CGB.
+I have analyzed version 1.3's noise, inrush, and various other factors on an oscilloscope and compared those to stock. This was part of the reason for adding the load switch on the output. By the numbers, the regulator is "less noisy" than stock - but due to the cyclical nature of that noise - it does reflect a small hum onto the input rail. Because the CGB runs the audio amp off of the batteries directly, this noise is slightly audible (and will vary system to system). While system volume is set high, this audible noise is LESS than the stock CGB. When the system volume is set low, the audible noise is higher than a stock CGB. 
+
+I have noticed that the condition of the speaker, speaker capacitor (C38), volume potentiometer, and power switch is a large factor in this particular noise. 
+
+Clean your power switch and volume knob, and replace C38 and your speaker if they're in poor condition.
 
 ## License
 
