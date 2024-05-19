@@ -31,11 +31,11 @@ This regulator board uses a high efficiency +5v regulator IC and adds an additio
 
 ## Compatibility
 
-This board should be compatible with stock CGB motherboards. I have tested on CGB-CPU-03 (CPU-CGB-C). It should also be compatible with N64-freak Pocket-Color and Light-Color conversion boards (_IT IS NOT COMPATIBLE_ with skimzor PoCo or Bucket Mouse MGBC as these do not have the CGB-REG IC). 
+This board should be compatible with stock CGB motherboards. I have tested on CGB-CPU-03 (CPU-CGB-C). It should also be compatible with N64-freak Pocket-Color and Light-Color conversion boards (_IT IS NOT COMPATIBLE_ with skimzor PoCo, Bucket Mouse MGBC or Natalie-the-Nerd YAP and LOCO boards as these do not have the CGB-REG IC). 
 
 I would strongly advise removing C32 from the Game Boy Color PCB when using this regulator. This capacitor is unneccesary as the new regulator PCB already includes appropriate output capacitors, and due to the high frequency switching of this device it will provide little benefit and will increase inrush current, possibly leading to the Game Boy failing to boot at low-battery-high-current loads (such as with an EZ-flash or Everdrive)
 
-Hand cut or Natalie-the-nerd pocket color boards require running wires from pins 5 and 6 to the appropriate vias for the -15V and 13.6V rails, as well as relocating R20, C35, and VR2 for CGB-REG, as these components are on the bottom half of the CGB board. I hope to have a tutorial for this particular configuration available in the near future.
+Hand cut or Natalie-the-Nerd chop pocket color boards require running wires from pins 5 and 6 to the appropriate vias for the -15V and 13.6V rails, as well as relocating R20, C35, and VR2 for CGB-REG, as these components are on the bottom half of the CGB board. I hope to have a tutorial for this particular configuration available in the near future.
 
 ## Part Selection Methodology
 
